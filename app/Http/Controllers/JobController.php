@@ -8,24 +8,22 @@ use Illuminate\Http\Request;
 class JobController extends Controller
 {
     /**
+     * class constructor
+     * 
+     * @param \App\Models\Job $job
+     */
+    public function __construct(
+        public Job $job
+    ) {
+
+    }
+    /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
     {
-        $jobs = Job::query();
-
-        $jobs->when(request('search'), function ($query) {
-            $query->where(function ($query) {
-                $query->whereRaw('LOWER(`title`) LIKE ?', ['%' . request('search') . '%'])
-                    ->orWhereRaw('LOWER(`description`) LIKE ?', ['%' . request('search') . '%']);
-            });
-        })->when(request('min_salary'), function($query) {
-            $query->where('salary', '>=', request('min_salary'));
-        })->when(request('max_salary'), function($query) {
-            $query->where('salary', '<=', request('max_salary'));
-        });
-
-        return view('job.index', ['jobs' => $jobs->get()]);
+        $jobs = $this->job->getAllJobs();
+        return view('job.index', ['jobs' => $jobs]);
     }
 
     /**
