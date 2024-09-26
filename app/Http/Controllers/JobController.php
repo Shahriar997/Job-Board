@@ -22,8 +22,14 @@ class JobController extends Controller
      */
     public function index(Request $request)
     {
-        $jobs = $this->job->getAllJobs();
-        return view('job.index', ['jobs' => $jobs]);
+        $filters = $request->only([
+            'search',
+            'min_salary',
+            'max_salary',
+            'experience',
+            'category',
+        ]);
+        return view('job.index', ['jobs' => Job::filter($filters)->get()]);
     }
 
     /**

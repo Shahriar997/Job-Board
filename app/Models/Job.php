@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Query\Builder as QueryBuilder;
 
 class Job extends Model
 {
@@ -16,29 +18,28 @@ class Job extends Model
     public static array $category = ['IT', 'Finance', 'Sales', 'Marketing'];
 
     /**
-     * get all jobs by filters
+     * filter scope function
      * 
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @param \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder $query
+     * @param array $filters
+     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder
      */
-    public function getAllJobs(): Collection
+    public function scopeFilter(Builder | QueryBuilder $query, array $filters) : Builder|QueryBuilder
     {
-        $jobs = self::query();
-
-        $jobs->when(request('search'), function ($query) {
-            $query->where(function ($query) {
-                $query->whereRaw('LOWER(`title`) LIKE ?', ['%' . request('search') . '%'])
-                    ->orWhereRaw('LOWER(`description`) LIKE ?', ['%' . request('search') . '%']);
+        return $query->when( $filters['search'] ?? null, function ($query, $search) {
+            $query->where(function ($query) use($search) {
+                $query->whereRaw('LOWER(`title`) LIKE ?', ['%' . $search . '%'])
+                    ->orWhereRaw('LOWER(`description`) LIKE ?', ['%' . $search . '%']);
             });
-        })->when(request('min_salary'), function ($query) {
-            $query->where('salary', '>=', request('min_salary'));
-        })->when(request('max_salary'), function ($query) {
-            $query->where('salary', '<=', request('max_salary'));
-        })->when(request('experience'), function ($query) {
-            $query->where('experience', request('experience'));
-        })->when(request('category'), function ($query) {
-            $query->where('category', request('category'));
+        })->when($filters['min_salary'] ?? null, function ($query, $minSalary) {
+            $query->where('salary', '>=', $minSalary);
+        })->when($filters['max_salary'] ?? null, function ($query, $maxSalary) {
+            $query->where('salary', '<=', $maxSalary);
+        })->when($filters['experience'] ?? null, function ($query, $experience) {
+            $query->where('experience', $experience);
+        })->when($filters['category'] ?? null, function ($query, $category) {
+            $query->where('category', $category);
         });
-
-        return $jobs->get();
     }
+
 }
