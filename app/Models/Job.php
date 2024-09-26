@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Query\Builder as QueryBuilder;
 
 class Job extends Model
@@ -17,19 +17,27 @@ class Job extends Model
     //TODO: make this dynamic by fetching from db
     public static array $category = ['IT', 'Finance', 'Sales', 'Marketing'];
 
+    public function employer(): BelongsTo
+    {
+        return $this->belongsTo(Employer::class);
+    }
+
     /**
      * filter scope function
-     * 
+     *
      * @param \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder $query
      * @param array $filters
      * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder
      */
-    public function scopeFilter(Builder | QueryBuilder $query, array $filters) : Builder|QueryBuilder
+    public function scopeFilter(Builder | QueryBuilder $query, array $filters): Builder | QueryBuilder
     {
-        return $query->when( $filters['search'] ?? null, function ($query, $search) {
-            $query->where(function ($query) use($search) {
+        return $query->when($filters['search'] ?? null, function ($query, $search) {
+            $query->where(function ($query) use ($search) {
                 $query->whereRaw('LOWER(`title`) LIKE ?', ['%' . $search . '%'])
-                    ->orWhereRaw('LOWER(`description`) LIKE ?', ['%' . $search . '%']);
+                    ->orWhereRaw('LOWER(`description`) LIKE ?', ['%' . $search . '%'])
+                    ->orWhereHas('employer', function ($query) use ($search) {
+                        $query->whereRaw('LOWER(`company_name`) LIKE ?', ['%' . $search . '%']);
+                    });
             });
         })->when($filters['min_salary'] ?? null, function ($query, $minSalary) {
             $query->where('salary', '>=', $minSalary);
