@@ -7,60 +7,18 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+This is a Job Board app where a user can sign in and register as a company and create jobs. a user can apply for jobs. This project was made while doing udemy course *Master Laravel 12 & PHP: From Beginner to Advanced*
+certificate: https://www.udemy.com/certificate/UC-3f07fe19-aee1-47a5-bacd-e45e7e8d9552/
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+![Laravel-Job-Board-04-16-2025_02_49_AM](https://github.com/user-attachments/assets/c3ec7c32-28ca-44c9-b74b-25b99bc8c0a8)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+![Laravel-Job-Board-04-16-2025_02_54_AM](https://github.com/user-attachments/assets/3a713639-3a39-4150-b96d-a0d8b4c18f3f)
 
-## Learning Laravel
+![Laravel-Job-Board-04-16-2025_02_50_A](https://github.com/user-attachments/assets/a1ce0605-2909-4b9c-856a-7de89fc027c8)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+![Laravel-Job-Board-04-16-2025_02_50_AM](https://github.com/user-attachments/assets/f5bc737f-8c14-480b-8a82-f9d747d7105a)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+![Laravel-Job-Board-04-16-2025_02_51_AM](https://github.com/user-attachments/assets/e9f35ef0-c3e5-4a60-bd2f-9d20fcd56d4b)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+![Laravel-Job-Board-04-16-2025_02_53_AM](https://github.com/user-attachments/assets/04d1b0b8-aa55-4606-b1cf-593c8fc1fc9f)
